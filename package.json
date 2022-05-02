@@ -1,0 +1,11 @@
+{
+  "name": "portforio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nymer/portforio.git",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
