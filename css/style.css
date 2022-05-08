@@ -1,0 +1,159 @@
+/* 変数 */
+:root {
+    --header_footer-background-color: rgba(245, 178, 177, 0.5);
+    --header_footer-color: #bbb;
+}
+
+/* ページ共通 */
+* {
+  margin: 0;
+  font-family: 'Roboto Mono', monospace;
+  color: #020E34;
+}
+
+h1 ,h2 ,.menu-link {
+  font-family: 'Pacifico', cursive;
+}
+
+a {
+  text-decoration: none;
+}
+.page-header ,.nav ,.menu-item ,.section-home ,.page-footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 ,h2 ,p {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+img {
+  display: block;
+}
+
+/* ヘッダー */
+.page-header {
+  position: fixed;
+  width: 100vw;
+  height: 60px;
+  background-color: var(--header_footer-background-color);
+}
+
+.menu-list{
+  display: flex;
+}
+
+.menu-item {
+  display: inline;
+  padding: 10px;
+  margin: 20px;
+}
+
+.menu-link {
+  color: var(--header_footer-color);
+  font-size: 1.2em;
+  font-weight: bolder;
+  padding:5px 10px;
+  margin-top: 10px;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  /* color: #57D2FF; */
+}
+
+.menu-link:hover{
+  color:#fff;
+}
+
+.menu-link::after {
+  content: '';
+  /*絶対配置で線の位置を決める*/
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  /*線の形状*/
+  width: 80%;
+  height: 2px;
+  background:#fff;
+  /*アニメーションの指定*/
+  transition: all .3s;
+  transform: scale(0, 1);/*X方向0、Y方向1*/
+  transform-origin: left top;/*左上基点*/
+}
+
+/*hoverの設定*/
+.menu-link:hover::after {
+  transform: scale(1, 1);/*X方向にスケール拡大*/
+}
+
+/* セクション共通 */
+.section {
+  display: flex;
+  padding: 15vh 100px 5vh 100px;
+  height: 100vh;
+  justify-content: center;
+}
+.section-title {
+  width: 100%;
+  font-size: 2em;
+  margin-bottom: 70px;
+}
+
+/* セクションHOME */
+.section-home-title {
+  color: #fff;
+  font-size: 4em;
+  text-align: center;
+}
+
+.section-home-para {
+  color: var(--header_footer-color);
+  margin-top: 20px;
+}
+
+#particles-js { 
+	z-index:-1;/*描画を一番下に*/
+	background-color:#020E34;/*背景色*/
+}
+
+#wrapper{
+  position: absolute;
+	z-index: 1;/*z-indexの数字を大きくすることで描画を#particles-jsよりも上に*/
+}
+
+/* セクションABOUT */
+.img-profile {
+  height: 350px;
+  width: 280px;
+}
+.col-img-profile {
+  align-items: center;
+}
+
+.col-about-para {
+  padding: 20px;
+}
+
+/* セクションWORK */
+.section-work {
+  background-color: #E6E0EF;
+}
+
+
+/* フッター */
+.page-footer {
+  width: 100vw;
+  height: 30px;
+  font-size: 0.7em;
+  background-color: var(--header_footer-background-color);
+}
+
+.page-footer-para {
+  padding-top: 15px;
+  color: var(--header_footer-color);
+}
