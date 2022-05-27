@@ -1,30 +1,74 @@
+@charset "utf-8";
+
+/* ========================================== */
+/*========= Main画面のCSS スタート ===========*/
+/* ========================================== */
+
 /* 変数 */
 :root {
     --header_footer-background-color: rgba(245, 178, 177, 0.5);
     --header_footer-color: #bbb;
+    --section-between-background-color: #E6E0EF;
+    --section-home-background-color: #020E34;
 }
 
 /* ページ共通 */
 * {
   margin: 0;
   font-family: 'Roboto Mono', monospace;
-  color: #020E34;
+  color: var(--section-home-background-color);
 }
 
-h1 ,h2 ,.menu-link {
+
+/* オブジェクトふわっ */
+.fadeUp {
+  animation-name:fadeUpAnime;
+  animation-duration:1.7s;
+  animation-fill-mode:forwards;
+  opacity:0;
+  }
+  
+  @keyframes fadeUpAnime{
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+/* スクロールをしたら出現する要素にはじめに透過0を指定 */
+.fadeUpTrigger{
+  opacity: 0;
+}
+
+h1,
+h2,
+.menu-link {
   font-family: 'Pacifico', cursive;
 }
 
 a {
   text-decoration: none;
 }
-.page-header ,.nav ,.menu-item ,.section-home ,.page-footer{
+
+.page-header,
+.nav,
+.menu-item,
+.section-home,
+.skill-item,
+.page-footer {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-h1 ,h2 ,p {
+h1,
+h2,
+h3,
+p {
   width: 100%;
 }
 
@@ -32,16 +76,96 @@ h1 ,h2 ,p {
   text-align: center;
 }
 
+h3 {
+  font-size: 1.5em;
+}
+
+p {
+  margin-bottom: 20px;
+}
 img {
   display: block;
 }
 
+/* ========================================== */
+/*========= Loading画面のCSS スタート ========*/
+/* ========================================== */
+/* Loading背景画面設定 */
+#splash {
+  /*fixedで全面に固定*/
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  text-align:center;
+  color:#fff;
+}
+
+/* Loading画像中央配置 */
+#splash_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  color: var(--section-home-background-color);
+  width: 100%;
+}
+
+/*割れる画面のアニメーション*/
+.loader_cover {
+  width: 100%;
+  height: 50%;
+  background-color: var(--section-between-background-color);
+  transition: all .2s cubic-bezier(.04, .435, .315, .9);
+  transform: scaleY(1);
+}
+
+/*上の画面*/
+.loader_cover-up {
+  transform-origin: center top;
+}
+
+/*下の画面*/
+.loader_cover-down {
+  position: absolute;
+  bottom: 0;
+  transform-origin: center bottom;
+}
+
+/*クラス名がついたらY軸方向に0*/
+.coveranime {
+  transform: scaleY(0);
+}
+
+/*========= レイアウトのためのCSS(Loading) ===============*/
+#container{
+  width:100%;
+  height: 100vh;
+  background: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+a{
+  color: var(--section-between-background-color);
+}
+
+a:hover{
+  text-decoration: none;   
+}
+
+/* ================= */
 /* ヘッダー */
+/* ================= */
 .page-header {
   position: fixed;
   width: 100vw;
   height: 60px;
   background-color: var(--header_footer-background-color);
+  z-index: 100;
 }
 
 .menu-list{
@@ -60,7 +184,6 @@ img {
   font-weight: bolder;
   padding:5px 10px;
   margin-top: 10px;
-  text-decoration: none;
   display: block;
   position: relative;
   /* color: #57D2FF; */
@@ -91,10 +214,12 @@ img {
   transform: scale(1, 1);/*X方向にスケール拡大*/
 }
 
+/* ================= */
 /* セクション共通 */
+/* ================= */
 .section {
   display: flex;
-  padding: 15vh 100px 5vh 100px;
+  padding: 15vh 200px 5vh 200px;
   height: 100vh;
   justify-content: center;
 }
@@ -104,16 +229,23 @@ img {
   margin-bottom: 70px;
 }
 
+/* ================= */
 /* セクションHOME */
+/* ================= */
+.randomAnime {
+	visibility: hidden;
+}
+
 .section-home-title {
   color: #fff;
   font-size: 4em;
   text-align: center;
+  margin-bottom: 35px;
 }
 
 .section-home-para {
   color: var(--header_footer-color);
-  margin-top: 20px;
+  animation-delay: 1.7s;
 }
 
 #particles-js { 
@@ -126,26 +258,59 @@ img {
 	z-index: 1;/*z-indexの数字を大きくすることで描画を#particles-jsよりも上に*/
 }
 
+/*========= タイピング ===============*/
+.TextTyping span {
+  display: none;
+}
+
+/*文字列後ろの線の設定*/
+.TextTyping::after {
+  content: "|";
+  animation: typinganime .8s ease infinite;
+}
+
+@keyframes typinganime{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+/* ================= */
 /* セクションABOUT */
+/* ================= */
 .img-profile {
   height: 350px;
   width: 280px;
+  border-radius: 30px;
 }
 .col-img-profile {
   align-items: center;
+}
+.skill-list {
+  padding-left: 0px;
+}
+.skill-item {
+  display: inline;
+  float: left;
+  padding: 5px 15px;
+  margin: 5px;
+  background-color: var(--section-between-background-color);
+  border-radius: 50px;
 }
 
 .col-about-para {
   padding: 20px;
 }
 
+/* ================= */
 /* セクションWORK */
+/* ================= */
 .section-work {
-  background-color: #E6E0EF;
+  background-color: var(--section-between-background-color);
 }
 
-
+/* ================= */
 /* フッター */
+/* ================= */
 .page-footer {
   width: 100vw;
   height: 30px;
