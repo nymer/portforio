@@ -70,12 +70,15 @@
                     </div>
                     <div class="col-md-8 col-about-para">
                         <h3>NAME</h3>
-                            <p>nymer</p>
+                            <p class="about-para-item">Eri Noyama</p>
                         <h3>DETAIL</h3>
-                            <p>岡山県倉敷市 出身<br>
-                            経営コンサルタント→SE</p>
+                            <p class="about-para-item">
+                                岡山県倉敷市 出身<br>
+                                大阪市中央区 在住<br>
+                                経営コンサルタント→SE
+                            </p>
                         <h3>SKILLS</h3>
-                            <ul class="skill-list">
+                            <ul class="skill-list about-para-item">
                                 <li class="skill-item ">HTML5</li>
                                 <li class="skill-item ">CSS3/SASS</li>
                                 <li class="skill-item ">JavaScript/Jquary</li>
@@ -105,7 +108,51 @@
         <!-- コンタクトsection -->
         <section class="section section-contact" id="section-contact">
             <div class="container">
-                <h2 class="section-title text-center">CONTACT</h2>
+                <h2 class="section-title text-center">CONTACT ME</h2>
+                <div id="formWrap">
+                    <p class="require-explanation text-center">
+                        制作のご依頼・ご相談などお気軽にお問い合わせください。
+                    </p>
+                    <form method="post" action="mail.php">
+                    <table class="formTable">
+                        <!--<tr>
+                        <th>ご用件</th>
+                        <td><select name="ご用件">
+                            <option value="">選択してください</option>
+                            <option value="ご質問・お問い合わせ">ご質問・お問い合わせ</option>
+                            <option value="リンクについて">リンクについて</option>
+                            </select></td>
+                        </tr> -->
+                        <p>
+                            <input class="inquiry-item" size="20" type="text" name="お名前" placeholder="Your name"/>
+                        </p>
+                        <p>
+                            <input class="inquiry-item" size="30" type="text" name="Email" placeholder="e-mail adress"/>
+                        </p>
+                        <!-- <tr>
+                            <th class="contact-column">TEL</th>
+                            <td><input size="30" type="text" name="電話番号" placeholder="お電話番号"/></td>
+                        </tr> -->
+                        <!-- <tr>
+                        <th>性別</th>
+                        <td><input type="radio" name="性別" value="男" /> 男　
+                            <input type="radio" name="性別" value="女" /> 女 </td>
+                        </tr>
+                        <tr>
+                        <th>サイトを知ったきっかけ</th>
+                        <td><input name="サイトを知ったきっかけ[]" type="checkbox" value="友人・知人" /> 友人・知人　
+                            <input name="サイトを知ったきっかけ[]" type="checkbox" value="検索エンジン" /> 検索エンジン</td>
+                        </tr> -->
+                        <p>
+                            <textarea class="inquiry-item" name="お問い合わせ内容" cols="50" rows="10" placeholder="Inquiry Contents"></textarea>
+                        </p>
+                    </table>
+                    <p class="text-center">
+                        <input type="submit" class="inquiry-btn" value="Submit" />
+                        <input type="reset" class="inquiry-btn" value="Reset" />
+                    </p>
+                    </form>
+                </div>
             </div>
         </section>
     </main>

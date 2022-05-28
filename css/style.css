@@ -15,7 +15,7 @@
 /* ページ共通 */
 * {
   margin: 0;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'md-serif';
   color: var(--section-home-background-color);
 }
 
@@ -23,7 +23,7 @@
 /* オブジェクトふわっ */
 .fadeUp {
   animation-name:fadeUpAnime;
-  animation-duration:1.7s;
+  animation-duration:1.9s;
   animation-fill-mode:forwards;
   opacity:0;
   }
@@ -77,11 +77,12 @@ p {
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.3em;
+  text-shadow: -2px -2px 2px var(--section-between-background-color), 2px 2px var(--header_footer-color);
 }
 
 p {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 img {
   display: block;
@@ -227,6 +228,7 @@ a:hover{
   width: 100%;
   font-size: 2em;
   margin-bottom: 70px;
+  text-shadow: -1px -1px 1px #000000, 1px 1px #000000;
 }
 
 /* ================= */
@@ -285,17 +287,22 @@ a:hover{
 .col-img-profile {
   align-items: center;
 }
+
+.about-para-item {
+  margin-left: 20px;
+}
 .skill-list {
   padding-left: 0px;
 }
 .skill-item {
   display: inline;
   float: left;
-  padding: 5px 15px;
+  padding: 1px 15px;
   margin: 5px;
   background-color: var(--section-between-background-color);
   border-radius: 50px;
 }
+
 
 .col-about-para {
   padding: 20px;
@@ -306,6 +313,101 @@ a:hover{
 /* ================= */
 .section-work {
   background-color: var(--section-between-background-color);
+}
+
+/* ================= */
+/* セクションCONTACT */
+/* ================= */
+/* 必須バッチ */
+/* .contact-column {
+  position: relative;
+}
+.required {
+  display: inline;
+  padding: 5px 15px;
+  background-color: var(--section-between-background-color);
+  border-radius: 50px;
+  position: absolute;
+  right: 40px;
+  justify-content: center;
+  align-items: center;
+} */
+
+.require-explanation {
+  margin-bottom: 40px;
+}
+
+.inquiry-item
+{
+  font-family: 'Cardo', serif;
+  width: 100%;
+  font-size: 1.3em;
+  padding: 10px 15px;
+  background-color: var(--section-between-background-color);
+  border-color: var(--section-between-background-color);
+  opacity: 0.3;
+}
+
+.inquiry-item:focus {
+  background-color: var(--section-between-background-color);
+  opacity: 0.5;
+}
+
+.inquiry-btn {
+  padding: 5px 15px;
+  width: 90px;
+  margin-top: 25px;
+  background-color: var(--section-between-background-color);
+  border-radius: 50px;
+}
+
+#formWrap {
+	width:700px;
+	margin:0 auto;
+	color:#555;
+	line-height:110%;
+	font-size:90%;
+}
+/* table.formTable{
+	width:100%;
+	margin:50px auto;
+	border-collapse:collapse;
+}
+table.formTable td,table.formTable th{
+	border:1px solid #ccc;
+	padding:10px;
+}
+table.formTable th{
+	width:25%;
+	font-weight:normal;
+	background:#efefef;
+	text-align:left;
+} */
+/*簡易版レスポンシブ用CSS（必要最低限のみとしています。ブレークポイントも含め自由に設定下さい）*/
+@media screen and (max-width:572px) {
+#formWrap {
+	width:95%;
+	margin:0 auto;
+}
+/* table.formTable th, table.formTable td {
+	width:auto;
+	display:block;
+}
+table.formTable th {
+	margin-top:5px;
+	border-bottom:0;
+} */
+form input[type="text"], form textarea {
+	width: 90%;
+	padding:5px;
+	font-size:110%;
+	display:block;
+}
+form input[type="submit"], form input[type="reset"], form input[type="button"] {
+	display:block;
+	width:100%;
+	height:40px;
+}
 }
 
 /* ================= */
