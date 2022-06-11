@@ -125,11 +125,13 @@
   background-color: #fff;
   transition: all 1.2s cubic-bezier(.04, .435, .315, .9);
   transform: scaleY(1);
-  z-index: 999;
+  z-index: 998;
 }
 
 /*上の画面*/
 .loader_cover-up {
+  position: absolute;
+  top: 0;
   transform-origin: center top;
 }
 
@@ -304,9 +306,10 @@ btn-ハンバーガーメニュー 3本線が奥行きを持って回転して×
 }
 
 .section-home-para {
+  opacity: 0.0;
   /* color: var(--accent-color-green); */
   color: var(--header_footer-background-color-opacity);
-  animation-delay: 1.7s;
+  animation-delay: 2.0s;
   opacity: 0.2;
 }
 

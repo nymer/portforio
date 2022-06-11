@@ -4,7 +4,7 @@
 // テキストのカウントアップ+バーの設定
 var bar = new ProgressBar.Line(splash_text, {//id名を指定
   easing: 'easeInOut',//アニメーション効果linear、easeIn、easeOut、easeInOutが指定可能
-  duration: 2000,//時間指定(1000＝1秒)
+  duration: 2100,//時間指定(1000＝1秒)
   // strokeWidth: 0.2,//進捗ゲージの太さ
   // color: 'rgba(216,230,121,1)',//進捗ゲージのカラー
   // trailWidth: 0.2,//ゲージベースの線の太さ
@@ -32,7 +32,7 @@ bar.animate(0.0, function () {//バーを描画する割合を指定します 1.
   $("#splash_text").fadeOut(10);//フェイドアウトでローディングテキストを削除
   $(".loader_cover-up").addClass("coveranime");//カバーが上に上がるクラス追加
   $(".loader_cover-down").addClass("coveranime");//カバーが下に下がるクラス追加
-  $("#splash").fadeOut();//#splashエリアをフェードアウト
+  // $("#splash").fadeOut();//#splashエリアをフェードアウト
 });
 
 //--------------------------------------------------------
