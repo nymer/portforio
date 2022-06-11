@@ -24,26 +24,38 @@
     <link rel="stylesheet" type="text/css" href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/8-8/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
     <!-- 自作CSS -->
+    <link rel="stylesheet" href="./css/common.css" >
     <link rel="stylesheet" href="./css/style.css" >
 
 </head>
 <body>
     <!-- Loading画面 -->
+    
     <div id="splash">
-    <div id="splash_text"></div>
+    <div id="splash_text">
+        <div class="loading">
+            <span class="title">LOADING</span>
+            <span class="circle1"></span>
+            <span class="circle2"></span>
+            <span class="circle3"></span>
+        </div>    
+    </div>
     <!--上に上がるエリア-->
     <div class="loader_cover loader_cover-up"></div>
     <!--下に下がるエリア-->
     <div class="loader_cover loader_cover-down"></div>
     </div>
 
-    <!-- ヘッダー -->
+    <!-- メニューbtn -->
+    <div class="openbtn"><span></span><span></span><span></span></div>
+
+    <!-- ヘッダーメニュー -->
     <header class="page-header">
         <div class="row row-center">
             <nav class="nav">
                 <ul class="menu-list">
-                    <li class="menu-item home"> <a class="menu-link" href="#particles-js">HOME</a></li>
-                    <li class="menu-item about"><a class="menu-link" href="#section-about">ABOUT</a></li>
+                    <li class="menu-item home"><a class="menu-link" href="#particles-js">HOME</a></li>
+                    <li class="menu-item about"><a class="menu-link" href="#section-about">ABOUT ME</a></li>
                     <li class="menu-item work"><a class="menu-link" href="#section-work">WORK</a></li>
                     <li class="menu-item contact"><a  class="menu-link"href="#section-contact">CONTACT</a></li>
                 </ul>
@@ -52,32 +64,36 @@
     </header>
 
     <main>
-        <!-- ホームsection -->
-        <section class="section section-home text-center " id="particles-js">
+        <!-- HOME section -->
+        <section class="section section-home text-center" id="particles-js" data-section-name="Home">
             <div id="wrapper">
                 <h1 class="section-home-title">NYMER</h1>
                     <p class="section-home-para">web developer & designer<br>I provide you an amazing experience</p>
             </div>
         </section>
 
-        <!-- アバウトsection -->
-        <section class="section section-about" id="section-about">
+        <!-- ABOUT section -->
+        <section class="section section-about" id="section-about" data-section-name="About">
             <div class="container">
                 <h2 class="section-title text-center">ABOUT ME</h2>
                 <div class="row">
-                    <div class="col-md-4 col-img-profile">
-                        <img class="img img-profile" src="./img/profile.png" alt="plofile-img"> 
+                    <div class="col-md-4 col-img-profile neumorphism">
+                        <img class="img img-profile box" src="./img/profile.jpg" alt="plofile-img"> 
                     </div>
                     <div class="col-md-8 col-about-para">
-                        <h3>NAME</h3>
-                            <p class="about-para-item">Eri Noyama</p>
-                        <h3>DETAIL</h3>
+                        <h3><span class="about-item">NAME</span></h3>
+                            <p class="about-para-item">ERI NOYAMA</p>
+                        <h3><span class="about-item">DETAIL</span></h3>
                             <p class="about-para-item">
                                 岡山県倉敷市 出身<br>
                                 大阪市中央区 在住<br>
-                                経営コンサルタント→SE
+                                組織人事コンサルタント→SE
                             </p>
-                        <h3>SKILLS</h3>
+                            <p class="about-para-item">
+                                平日は会社員として金融機関のWebシステム開発に携わっています。<br>
+                                副業としてWebサイト制作を中心とした活動をしています。
+                            </p>
+                        <h3><span class="about-item">SKILLS</span></h3>
                             <ul class="skill-list about-para-item">
                                 <li class="skill-item ">HTML5</li>
                                 <li class="skill-item ">CSS3/SASS</li>
@@ -88,68 +104,32 @@
                                 <li class="skill-item ">ASP.NET</li>
                                 <li class="skill-item ">VBA</li>
                                 <li class="skill-item ">UI Design</li>
-                                <li class="skill-item ">Canva</li>
                                 <li class="skill-item ">WordPress</li>
                             </ul>
-                        <h3></h3>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ワークsection -->
-        <section class="section section-work" id="section-work">
+        <!-- WORK section -->
+        <section class="section section-work section-between-background-color" id="section-work" data-section-name="Work">
             <div class="container">
                 <h2 class="section-title text-center">WORK</h2>
-
+                <div class="fluid"></div>
+                <div class="comingsoon text-center">Coming Soon</div>
             </div>
         </section>
 
-        <!-- コンタクトsection -->
-        <section class="section section-contact" id="section-contact">
+        <!-- CONTACT section -->
+        <section class="section section-contact" id="section-contact" data-section-name="Contact">
             <div class="container">
                 <h2 class="section-title text-center">CONTACT ME</h2>
                 <div id="formWrap">
                     <p class="require-explanation text-center">
                         制作のご依頼・ご相談などお気軽にお問い合わせください。
                     </p>
-                    <form method="post" action="mail.php">
-                    <table class="formTable">
-                        <!--<tr>
-                        <th>ご用件</th>
-                        <td><select name="ご用件">
-                            <option value="">選択してください</option>
-                            <option value="ご質問・お問い合わせ">ご質問・お問い合わせ</option>
-                            <option value="リンクについて">リンクについて</option>
-                            </select></td>
-                        </tr> -->
-                        <p>
-                            <input class="inquiry-item" size="20" type="text" name="お名前" placeholder="Your name"/>
-                        </p>
-                        <p>
-                            <input class="inquiry-item" size="30" type="text" name="Email" placeholder="e-mail adress"/>
-                        </p>
-                        <!-- <tr>
-                            <th class="contact-column">TEL</th>
-                            <td><input size="30" type="text" name="電話番号" placeholder="お電話番号"/></td>
-                        </tr> -->
-                        <!-- <tr>
-                        <th>性別</th>
-                        <td><input type="radio" name="性別" value="男" /> 男　
-                            <input type="radio" name="性別" value="女" /> 女 </td>
-                        </tr>
-                        <tr>
-                        <th>サイトを知ったきっかけ</th>
-                        <td><input name="サイトを知ったきっかけ[]" type="checkbox" value="友人・知人" /> 友人・知人　
-                            <input name="サイトを知ったきっかけ[]" type="checkbox" value="検索エンジン" /> 検索エンジン</td>
-                        </tr> -->
-                        <p>
-                            <textarea class="inquiry-item" name="お問い合わせ内容" cols="50" rows="10" placeholder="Inquiry Contents"></textarea>
-                        </p>
-                    </table>
-                    <p class="text-center">
-                        <input type="submit" class="inquiry-btn" value="Submit" />
-                        <input type="reset" class="inquiry-btn" value="Reset" />
+                    <p class="contact-letter">
+                        <a href="mailto:eri.noyama67@gmail.com"><img src="./img/letter.png" alt="お問い合わせ" class="contact-letter-img"></a>
                     </p>
                     </form>
                 </div>
@@ -158,9 +138,7 @@
     </main>
     <!-- フッター -->
     <footer class="page-footer">
-        <ul class="footer-list">
-            <li class="page-footer-para text-center">Copyright©︎ nymer portfolio site All Rights Reserved.</li>
-        </ul>
+            <span class="page-footer-para text-center">Copyright©︎ nymer portfolio site All Rights Reserved.</span>
     </footer>
 
     <!-- jQuary読み込み -->

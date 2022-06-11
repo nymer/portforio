@@ -1,0 +1,130 @@
+@charset "utf-8";
+
+/* 変数 */
+:root {
+  --accent-color-green: rgba(21,178,150,1);
+  --accent-color-pink: rgba(230,50,126,1);
+  --header_footer-background-color: rgba(255,255,71,0.98); 
+  --header_footer-background-color-opacity: rgba(255,255,71,0.7);
+  /* --section-between-background-color: rgba(120,152,251,0.5); */
+  --section-between-background-color: rgba(120,152,251,0.8);
+  --section-home-background-color: #001437;
+}
+
+body {
+  position: relative;
+}
+/* ページ共通 */
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@700&family=Pacifico&family=Press+Start+2P&family=Roboto+Mono:ital,wght@1,300&display=swap');
+* {
+  font-family: 'md-serif';
+  color: var(--section-home-background-color);
+}
+
+h1,
+h2,
+.menu-link {
+  font-family: 'Pacifico', cursive;
+}
+
+a {
+  text-decoration: none;
+}
+
+.page-header,
+.nav,
+.menu-item,
+.section-home,
+.skill-item,
+.page-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,
+h2,
+p {
+  width: 100%;
+  line-height: 1.5em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+h3 {
+  display: inline-block;
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
+  margin: 1.0em 0 1.2em 0;
+}
+
+p {
+  margin-bottom: 1.5em;
+  }
+@media screen and (min-width: 768px) {
+  p {
+  margin-bottom: 25px;
+  }
+}
+
+img {
+  display: block;
+}
+
+/* オブジェクトふわっ */
+.fadeUp {
+  animation-name:fadeUpAnime;
+  animation-duration:1.9s;
+  animation-fill-mode:forwards;
+  opacity:0;
+  }
+
+  @keyframes fadeUpAnime{
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+/* スクロールをしたら出現する要素にはじめに透過0を指定 */
+.fadeUpTrigger{
+  opacity: 0;
+}
+
+/* ================= */
+/* セクション共通 */
+/* ================= */
+.section {
+  display: flex;
+  padding: 10vh 20px 10vh 20px;
+  min-height: 100vh;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .section {
+    padding: 12vh 200px 5vh 200px;
+    height: 100vh;
+  }
+};
+
+.section-zme {
+  height: 100vh;
+}
+
+.section-title {
+  width: 100%;
+  font-size: 2em;
+  margin-bottom: 70px;
+  text-shadow: -1px -1px 1px var(--accent-color-pink), 1px 1px var(--accent-color-green);
+}
+
+.section-between-background-color {
+  background-color: var(--section-between-background-color);
+}

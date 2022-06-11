@@ -1,96 +1,100 @@
 @charset "utf-8";
 
 /* ========================================== */
-/*========= Main画面のCSS スタート ===========*/
-/* ========================================== */
-
-/* 変数 */
-:root {
-    --header_footer-background-color: rgba(245, 178, 177, 0.5);
-    --header_footer-color: #bbb;
-    --section-between-background-color: #E6E0EF;
-    --section-home-background-color: #020E34;
-}
-
-/* ページ共通 */
-* {
-  margin: 0;
-  font-family: 'md-serif';
-  color: var(--section-home-background-color);
-}
-
-
-/* オブジェクトふわっ */
-.fadeUp {
-  animation-name:fadeUpAnime;
-  animation-duration:1.9s;
-  animation-fill-mode:forwards;
-  opacity:0;
-  }
-  
-  @keyframes fadeUpAnime{
-    from {
-      opacity: 0;
-      transform: translateY(100px);
-    }
-  
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-/* スクロールをしたら出現する要素にはじめに透過0を指定 */
-.fadeUpTrigger{
-  opacity: 0;
-}
-
-h1,
-h2,
-.menu-link {
-  font-family: 'Pacifico', cursive;
-}
-
-a {
-  text-decoration: none;
-}
-
-.page-header,
-.nav,
-.menu-item,
-.section-home,
-.skill-item,
-.page-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-h1,
-h2,
-h3,
-p {
-  width: 100%;
-}
-
-.text-center {
-  text-align: center;
-}
-
-h3 {
-  font-size: 1.3em;
-  text-shadow: -2px -2px 2px var(--section-between-background-color), 2px 2px var(--header_footer-color);
-}
-
-p {
-  margin-bottom: 25px;
-}
-img {
-  display: block;
-}
-
-/* ========================================== */
 /*========= Loading画面のCSS スタート ========*/
 /* ========================================== */
+.loading {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  z-index: 999;
+}
+.loading::after {
+  border-radius: 40%;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    #ee88aa,
+    rgba(250, 238, 255, 0.3) 90%,
+    rgba(230, 238, 255, 0.5)
+  );
+  animation: color-fade 3s infinite linear;
+}
+.circle1,
+.circle2,
+.circle3 {
+  opacity: 0.4;
+  position: absolute;
+  background: #0af;
+  width: 100px;
+  height: 100px;
+  transform-origin: 50% 47%;
+  border-radius: 40%;
+  animation: rotation 3s infinite linear;
+  left: 0;
+}
+.circle2 {
+  opacity: 0.2;
+  background: #ff0;
+  animation: rotation 5s infinite linear;
+}
+.circle3 {
+  animation: rotation 2.5s infinite linear;
+}
+.title {
+  position: absolute;
+  top: 33px;
+  width: 100%;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+  font-size: 0.7rem;
+  line-height: 2rem;
+  letter-spacing: 0.15em;
+  animation: text-fade 300ms infinite linear;
+  left: 0;
+}
+/* 回転アニメーション */
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* ピンク色の背景のアニメーション */
+@keyframes color-fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+/* 点滅のアニメーション */
+@keyframes text-fade {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.6;
+  }
+}
 /* Loading背景画面設定 */
 #splash {
   /*fixedで全面に固定*/
@@ -103,22 +107,23 @@ img {
 }
 
 /* Loading画像中央配置 */
-#splash_text {
+/* #splash_text {
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: 999;
   transform: translate(-50%, -50%);
-  color: var(--section-home-background-color);
+  color: var(--header_footer-background-color);
   width: 100%;
-}
+} */
 
 /*割れる画面のアニメーション*/
 .loader_cover {
   width: 100%;
   height: 50%;
-  background-color: var(--section-between-background-color);
-  transition: all .2s cubic-bezier(.04, .435, .315, .9);
+  /* background-color: black; */
+  background-color: #fff;
+  transition: all 1.2s cubic-bezier(.04, .435, .315, .9);
   transform: scaleY(1);
 }
 
@@ -161,33 +166,97 @@ a:hover{
 /* ================= */
 /* ヘッダー */
 /* ================= */
+/*==================================
+btn-ハンバーガーメニュー 3本線が奥行きを持って回転して×に
+===================================*/
+
+/*ボタン外側*/
+.openbtn{
+  position: absolute;/*ボタン内側の基点となるためrelativeを指定*/
+  cursor: pointer;
+  width: 50px;
+  height:50px;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+/*ボタン内側*/
+.openbtn {
+  transition: all .7s;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  position: fixed;
+}
+
+.openbtn span{
+  display: inline-block;
+  transition: all .7s;/*アニメーションの設定*/
+  position: absolute;
+  left: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent-color-green);
+  width: 60%;
+}
+
+.openbtn span:nth-of-type(1) {
+  top:15px; 
+}
+
+.openbtn span:nth-of-type(2) {
+  top:25px;
+}
+
+.openbtn span:nth-of-type(3) {
+  top:35px;
+}
+
+/* S- activeクラスが付与されると3本線が回転して×になる*/
+.openbtn.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-135deg);
+    width: 30%;
+}
+.openbtn.active span:nth-of-type(2) {
+  opacity: 0;
+}
+.openbtn.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(135deg);
+    width: 30%;
+}
+/* E- activeクラスが付与されると線と周りのエリアが回転して×になる*/
+
+
 .page-header {
   position: fixed;
-  width: 100vw;
-  height: 60px;
+  width: 100%;
+  height: 100vh;
   background-color: var(--header_footer-background-color);
-  z-index: 100;
+  z-index: 9;
 }
 
-.menu-list{
+/* .menu-list{
   display: flex;
-}
+} */
 
 .menu-item {
-  display: inline;
+  /* display: inline; */
   padding: 10px;
   margin: 20px;
 }
 
 .menu-link {
-  color: var(--header_footer-color);
-  font-size: 1.2em;
+  color: var(--accent-color-green);
+  font-size: 1.5em;
   font-weight: bolder;
   padding:5px 10px;
   margin-top: 10px;
   display: block;
   position: relative;
-  /* color: #57D2FF; */
 }
 
 .menu-link:hover{
@@ -216,26 +285,14 @@ a:hover{
 }
 
 /* ================= */
-/* セクション共通 */
-/* ================= */
-.section {
-  display: flex;
-  padding: 15vh 200px 5vh 200px;
-  height: 100vh;
-  justify-content: center;
-}
-.section-title {
-  width: 100%;
-  font-size: 2em;
-  margin-bottom: 70px;
-  text-shadow: -1px -1px 1px #000000, 1px 1px #000000;
-}
-
-/* ================= */
 /* セクションHOME */
 /* ================= */
 .randomAnime {
 	visibility: hidden;
+}
+
+.section-home {
+  padding: 0;
 }
 
 .section-home-title {
@@ -246,18 +303,23 @@ a:hover{
 }
 
 .section-home-para {
-  color: var(--header_footer-color);
+  /* color: var(--accent-color-green); */
+  color: var(--header_footer-background-color-opacity);
   animation-delay: 1.7s;
+  opacity: 0.2;
 }
 
 #particles-js { 
 	z-index:-1;/*描画を一番下に*/
-	background-color:#020E34;/*背景色*/
+	background-color:var(--section-home-background-color);/*背景色*/
+  height: 1vh;
+  /* width: 1vw; */
 }
 
 #wrapper{
   position: absolute;
 	z-index: 1;/*z-indexの数字を大きくすることで描画を#particles-jsよりも上に*/
+  padding-bottom: 60px;
 }
 
 /*========= タイピング ===============*/
@@ -279,13 +341,65 @@ a:hover{
 /* ================= */
 /* セクションABOUT */
 /* ================= */
-.img-profile {
-  height: 350px;
-  width: 280px;
+.col-img-profile {
+  display: none;
+}
+
+/* .img-profile {
+  height: 330px;
+  width: 100%;
+  margin: 20px 0 50px 0;
   border-radius: 30px;
 }
+
 .col-img-profile {
-  align-items: center;
+  padding: 0 13% 0 13%;
+} */
+
+@media screen and (min-width: 768px) {
+  .col-img-profile {
+    display: initial;
+  }
+  .img-profile {
+    width: 100%;
+    border-radius: 30px;
+    width: 250px;
+    height: auto;
+    margin-bottom: 0px;
+  }
+  .col-img-profile {
+    padding: 0;
+  }  
+}
+
+/* 2. Neumorphism = 画像の立体化 =*/
+.neumorphism .box {
+  background-color: rgb(190, 205, 214);
+  transition: box-shadow 0.5s;
+  box-shadow:
+    10px 10px 30px rgba(18, 47, 61, 0.5),
+    -10px -10px 30px rgba(248, 253, 255, 0.9),
+    inset 10px 10px 30px transparent,
+    inset -10px -10px 30px transparent;
+}
+/* .neumorphism .box:hover {
+  box-shadow:
+    10px 10px 30px transparent,
+    -10px -10px 30px transparent,
+    inset 10px 10px 30px rgba(18, 47, 61, 0.5),
+    inset -10px -10px 30px rgba(248, 253, 255, 0.9);
+} */
+
+
+.about-item {
+  display: inline-block;
+  padding-right: 10px;
+  height: 15px;
+  background: repeating-linear-gradient(-45deg, 
+      transparent 0 2px, 
+      var(--header_footer-background-color-opacity) 2px 4px
+  );
+  font-weight: bold;
 }
 
 .about-para-item {
@@ -293,134 +407,136 @@ a:hover{
 }
 .skill-list {
   padding-left: 0px;
+  opacity: 0.9;
 }
 .skill-item {
   display: inline;
   float: left;
   padding: 1px 15px;
   margin: 5px;
-  background-color: var(--section-between-background-color);
+  background-color: var(--accent-color-green);
+  color: #fff;
   border-radius: 50px;
 }
 
-
 .col-about-para {
-  padding: 20px;
+  padding: 0 20px;
 }
 
 /* ================= */
 /* セクションWORK */
 /* ================= */
-.section-work {
-  background-color: var(--section-between-background-color);
+/*========= 流体シェイプを動かす ===============*/
+.fluid {
+  width:40vh;/*横幅*/
+  height: 40vh;/*縦幅*/
+  background:var(--header_footer-background-color);/*背景色*/
+  animation: fluidrotate 30s ease 0s infinite;/*アニメーションの設定*/
 }
+
+@keyframes fluidrotate {  
+  0%, 100% {
+      border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+  }
+  14% {
+      border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
+  }
+  28% {
+      border-radius: 54% 46% 38% 62%/49% 70% 30% 51%;
+  }
+  42% {
+      border-radius: 61% 39% 55% 45%/61% 38% 62% 39%;
+  }
+  56% {
+      border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
+  }
+  70% {
+      border-radius: 50% 50% 34% 66%/56% 68% 32% 44%;
+  }
+  84% {
+      border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
+  }
+}
+
+.section-work {
+  position: relative;
+    /* -webkit-clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%); */
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
+    background-color:var(--section-home-background-color);
+    color:#ccc;
+    padding: 150px 0 60px 0;
+    height: 130vh;
+}
+.comingsoon {
+  position: absolute;
+  bottom: 20%;
+  font-size: 1.3em;
+  padding: 10px;
+  right: 0;
+  width: 60%;
+  background-color: var(--accent-color-green);
+  color: #fff;
+}
+@media screen and (min-width: 768px) {
+  .section-work {
+    clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
+    padding: 230px 0 60px 0;
+    height: 150vh;
+  }
+  .comingsoon {
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+    font-size: 2em;
+    padding: 30px 80px;
+    width: initial;
+    color: #fff;
+  }
+  
+}
+
 
 /* ================= */
 /* セクションCONTACT */
 /* ================= */
-/* 必須バッチ */
-/* .contact-column {
-  position: relative;
-}
-.required {
-  display: inline;
-  padding: 5px 15px;
-  background-color: var(--section-between-background-color);
-  border-radius: 50px;
-  position: absolute;
-  right: 40px;
-  justify-content: center;
-  align-items: center;
-} */
-
 .require-explanation {
-  margin-bottom: 40px;
+  margin-bottom: 150px;
 }
 
-.inquiry-item
-{
-  font-family: 'Cardo', serif;
+.contact-letter {
   width: 100%;
-  font-size: 1.3em;
-  padding: 10px 15px;
-  background-color: var(--section-between-background-color);
-  border-color: var(--section-between-background-color);
-  opacity: 0.3;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
 }
 
-.inquiry-item:focus {
-  background-color: var(--section-between-background-color);
-  opacity: 0.5;
+.contact-letter-img {
+  display: inline;
+  width: 30%;
+  height: auto;
+  transition: .5s ;
+}
+@media screen and (min-width: 768px) {
+  .contact-letter-img {
+    width: 10%;
+  }
 }
 
-.inquiry-btn {
-  padding: 5px 15px;
-  width: 90px;
-  margin-top: 25px;
-  background-color: var(--section-between-background-color);
-  border-radius: 50px;
-}
-
-#formWrap {
-	width:700px;
-	margin:0 auto;
-	color:#555;
-	line-height:110%;
-	font-size:90%;
-}
-/* table.formTable{
-	width:100%;
-	margin:50px auto;
-	border-collapse:collapse;
-}
-table.formTable td,table.formTable th{
-	border:1px solid #ccc;
-	padding:10px;
-}
-table.formTable th{
-	width:25%;
-	font-weight:normal;
-	background:#efefef;
-	text-align:left;
-} */
-/*簡易版レスポンシブ用CSS（必要最低限のみとしています。ブレークポイントも含め自由に設定下さい）*/
-@media screen and (max-width:572px) {
-#formWrap {
-	width:95%;
-	margin:0 auto;
-}
-/* table.formTable th, table.formTable td {
-	width:auto;
-	display:block;
-}
-table.formTable th {
-	margin-top:5px;
-	border-bottom:0;
-} */
-form input[type="text"], form textarea {
-	width: 90%;
-	padding:5px;
-	font-size:110%;
-	display:block;
-}
-form input[type="submit"], form input[type="reset"], form input[type="button"] {
-	display:block;
-	width:100%;
-	height:40px;
-}
+.contact-letter-img:hover {
+  width: 11%;
 }
 
 /* ================= */
 /* フッター */
 /* ================= */
 .page-footer {
-  width: 100vw;
+  width: 100%;
   height: 30px;
   font-size: 0.7em;
-  background-color: var(--header_footer-background-color);
 }
 
 .page-footer-para {
-  padding-top: 15px;
-  color: var(--header_footer-color);
-}
+  display: block;
+  padding-bottom: 5px;
+  color: var(--accent-color-green);
+  }

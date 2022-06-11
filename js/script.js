@@ -1,34 +1,34 @@
 //--------------------------------------------------------
 //Loading画面
 //--------------------------------------------------------
-//テキストのカウントアップ+バーの設定
+// テキストのカウントアップ+バーの設定
 var bar = new ProgressBar.Line(splash_text, {//id名を指定
   easing: 'easeInOut',//アニメーション効果linear、easeIn、easeOut、easeInOutが指定可能
-  duration: 100,//時間指定(1000＝1秒)
-  strokeWidth: 0.2,//進捗ゲージの太さ
-  color: '#020E34',//進捗ゲージのカラー
-  trailWidth: 0.2,//ゲージベースの線の太さ
-  trailColor: '#bbb',//ゲージベースの線のカラー
-  text: {//テキストの形状を直接指定       
-    style: {//天地中央に配置
-      position: 'absolute',
-      left: '50%',
-      top: '50%',
-      padding: '0',
-      margin: '-30px 0 0 0',//バーより上に配置
-      transform:'translate(-50%,-50%)',
-      'font-size':'1rem',
-      color: '#020E34',
-    },
-    autoStyleContainer: false //自動付与のスタイルを切る
-  },
-  step: function(state, bar) {
-    bar.setText(Math.round(bar.value() * 100) + ' %'); //テキストの数値
-  }
+  duration: 2000,//時間指定(1000＝1秒)
+  // strokeWidth: 0.2,//進捗ゲージの太さ
+  // color: 'rgba(216,230,121,1)',//進捗ゲージのカラー
+  // trailWidth: 0.2,//ゲージベースの線の太さ
+  // trailColor: '#fff',//ゲージベースの線のカラー
+  // text: {//テキストの形状を直接指定       
+  //   style: {//天地中央に配置
+  //     position: 'absolute',
+  //     left: '50%',
+  //     top: '50%',
+  //     padding: '0',
+  //     margin: '-30px 0 0 0',//バーより上に配置
+  //     transform:'translate(-50%,-50%)',
+  //     'font-size':'1rem',
+  //     color: 'rgba(216,230,121,1)',
+  //   },
+  //   autoStyleContainer: false //自動付与のスタイルを切る
+  // },
+  // step: function(state, bar) {
+  //   bar.setText(Math.round(bar.value() * 100) + ' %'); //テキストの数値
+  // }
 });
 
 //アニメーションスタート
-bar.animate(1.0, function () {//バーを描画する割合を指定します 1.0 なら100%まで描画します
+bar.animate(0.0, function () {//バーを描画する割合を指定します 1.0 なら100%まで描画します
   $("#splash_text").fadeOut(10);//フェイドアウトでローディングテキストを削除
   $(".loader_cover-up").addClass("coveranime");//カバーが上に上がるクラス追加
   $(".loader_cover-down").addClass("coveranime");//カバーが下に下がるクラス追加
@@ -65,7 +65,6 @@ $(window).on('load', function(){
 
 // 動きのきっかけとなるアニメーションの名前を定義
 function fadeAnime(){
-
   // ふわっ
   $('.fadeUpTrigger').each(function(){ //fadeUpTriggerというクラス名が
     var elemPos = $(this).offset().top-50;//要素より、50px上の
@@ -87,8 +86,24 @@ function fadeAnime(){
 // 画面が読み込まれたらすぐに動かしたい場合の記述
   $(window).on('load', function(){
     fadeAnime();/* アニメーション用の関数を呼ぶ*/
-  });// ここまで画面が読み込まれたらすぐに動かしたい場合の記述
+  });
+	// ここまで画面が読み込まれたらすぐに動かしたい場合の記述
 
+// =================
+// ヘッダー
+// =================
+// ページヘッダーを初期表示非表示にする
+$('.page-header').toggle();
+// メニューボタンをクリックでメニューの表示/非表示の切り替え
+$(".openbtn").click(function () {
+		$(this).toggleClass('active');
+		$('.page-header').fadeToggle(200);
+});
+// メニューアイテムをクリックでメニューの表示/非表示の切り替え
+$(".menu-item").click(function () {
+	$(".openbtn").toggleClass('active');
+	$('.page-header').fadeToggle(200);
+});
 
 // =================
 // セクションHOME
@@ -98,7 +113,7 @@ function fadeAnime(){
 particlesJS("particles-js", {
 	"particles":{
 		"number":{
-			"value":250,//この数値を変更すると星の数が増減できる
+			"value":350,//この数値を変更すると星の数が増減できる
 			"density":{
 				"enable":true,
 				"value_area":800
