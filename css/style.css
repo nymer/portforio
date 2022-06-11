@@ -307,9 +307,8 @@ btn-ハンバーガーメニュー 3本線が奥行きを持って回転して×
 
 .section-home-para {
   opacity: 0.0;
-  /* color: var(--accent-color-green); */
   color: var(--header_footer-background-color-opacity);
-  animation-delay: 2.0s;
+  animation-delay: 1.7s;
   opacity: 0.2;
 }
 
@@ -317,29 +316,12 @@ btn-ハンバーガーメニュー 3本線が奥行きを持って回転して×
 	z-index:-1;/*描画を一番下に*/
 	background-color:var(--section-home-background-color);/*背景色*/
   height: 1vh;
-  /* width: 1vw; */
 }
 
 #wrapper{
   position: absolute;
 	z-index: 1;/*z-indexの数字を大きくすることで描画を#particles-jsよりも上に*/
   padding-bottom: 60px;
-}
-
-/*========= タイピング ===============*/
-.TextTyping span {
-  display: none;
-}
-
-/*文字列後ろの線の設定*/
-.TextTyping::after {
-  content: "|";
-  animation: typinganime .8s ease infinite;
-}
-
-@keyframes typinganime{
-  from{opacity:0}
-  to{opacity:1}
 }
 
 /* ================= */

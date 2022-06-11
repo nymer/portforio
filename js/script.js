@@ -32,7 +32,7 @@ bar.animate(0.0, function () {//バーを描画する割合を指定します 1.
   $("#splash_text").fadeOut(10);//フェイドアウトでローディングテキストを削除
   $(".loader_cover-up").addClass("coveranime");//カバーが上に上がるクラス追加
   $(".loader_cover-down").addClass("coveranime");//カバーが下に下がるクラス追加
-  // $("#splash").fadeOut();//#splashエリアをフェードアウト
+  $("#splash").fadeOut(2000);//#splashエリアをフェードアウト
 });
 
 //--------------------------------------------------------
